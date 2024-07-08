@@ -1,14 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Fade } from "react-awesome-reveal";
+
 
 function Section({title, description, backgroundImg, leftBtnText, rightBtnText}) {
   return (
-    <Wrap bgImage={backgroundImg}>
+    <Wrap $bgImage={backgroundImg}>
       <ItemText>
-        <h1>{title}</h1>
-        <p>{description}</p>
+        <Fade direction="up">
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </Fade>
       </ItemText>
       <Buttons>
+      <Fade direction="up">
         <ButtonGroup>
           <LeftButton>
             {leftBtnText}
@@ -19,6 +24,7 @@ function Section({title, description, backgroundImg, leftBtnText, rightBtnText})
             </RightButton>
           }
         </ButtonGroup>
+        </Fade>
         <DownnArrow src="/images/down-arrow.svg"/>
       </Buttons>
     </Wrap>
@@ -33,12 +39,11 @@ const Wrap = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/images/model-s.jpg");
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-image: ${props => `url("/images/${props.bgImage}")`}
+  background-image: ${props => `url("/images/${props.$bgImage}")`}
 `
 
 const ItemText = styled.div`
